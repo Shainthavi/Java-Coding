@@ -1,0 +1,292 @@
+1) 
+import java.util.*;
+class Main
+{
+    public static void main(String args[])
+    {
+        Scanner s1=new Scanner(System.in);
+        int x=s1.nextInt();
+        int l=97;
+        for(int i=0;i<x;i++)
+        {
+            for(int j=0;j<=i;j++)
+            {
+                System.out.print((char)l);
+            }
+            System.out.println();
+            l++;
+        }
+    }
+}
+output:
+4
+a
+bb
+ccc
+dddd
+
+2)
+import java.util.*;
+class Main
+{
+    public static void main(String args[])
+    {
+        Scanner s1=new Scanner(System.in);
+        int x=s1.nextInt();
+        for(int i=0;i<=0;i++)
+        {
+            for(int j=1;j<=3;j++)
+            {
+                System.out.print("@");
+            }
+            System.out.println();
+            for(int j=1;j<=3;j++)
+            {
+                System.out.print("?");
+            }
+            System.out.println();
+            for(int j=1;j<=3;j++)
+            {
+                System.out.print(">");
+            }
+        }
+    }
+}
+output:
+3
+@@@
+???
+>>>
+
+
+
+
+4
+public class TrapeziumPattern {
+
+    public static void main(String[] args) {
+        int N = 4; // Example value of N, you can change this as needed
+        int currentNumber = 1;
+        int increment = N * N + 1;
+
+        // Loop through each row
+        for (int i = 0; i < N; i++) {
+            // Print leading spaces for indentation
+            for (int j = 0; j < i; j++) {
+                System.out.print("  ");
+            }
+
+            // Print numbers and asterisks
+            for (int j = 0; j < 2 * (N - i); j++) {
+                if (j % 2 == 0) {
+                    System.out.print(currentNumber++);
+                } else {
+                    System.out.print("*");
+                }
+            }
+
+            // Move to the next line
+            System.out.println();
+        }
+    }
+}
+
+
+5)
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        int gcd = findGCD(a, b);
+        System.out.println(gcd);
+    }
+    public static int findGCD(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+}
+
+
+6)
+import java.util.*;
+public class CellularAutomaton {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] cells = new int[8];
+        for (int i = 0; i < 8; i++) {
+            cells[i] = scanner.nextInt();
+        }
+        int days = scanner.nextInt();
+        int[] result = simulate(cells, days);
+        for (int i = 0; i < 8; i++) {
+            System.out.print(result[i] + " ");
+        }
+        System.out.println();
+    }
+    public static int[] simulate(int[] cells, int days) {
+        int[] current = Arrays.copyOf(cells, cells.length);
+        int[] next = new int[8];
+        while (days > 0) {
+            for (int i = 0; i < 8; i++) {
+                int left = (i == 0) ? 0 : current[i - 1];
+                int right = (i == 7) ? 0 : current[i + 1];
+                next[i] = (left == right) ? 0 : 1;
+            }
+            current = Arrays.copyOf(next, next.length);
+            days--;
+        }
+        return current;
+    }
+}
+
+
+
+7)
+import java.util.*;
+interface resizable {
+    void resizeWith();
+    void resizeheight();
+}
+class rectangle implements resizable {
+     int h;
+
+    public void resizeWith() {
+         h=12;
+    }
+    public void resizeheight() {
+    }
+    public static void main(String args[]) {
+       int e=100;
+        rectangle r = new rectangle();
+        // System.out.println(e);
+        r.resizeWith();
+        r.h=e;
+        System.out.println(r.h); 
+    }
+}
+output:100
+
+
+8)
+interface circle
+{
+    int r=5;
+    default void c_area()
+    {
+        float c_a=3.14f*r*r;
+        System.out.println("Area of circle = "+c_a);
+    }
+}
+interface rectangle 
+{
+    int l=10,b=15;
+    default void r_area()
+    {
+        int r_a=l*b;
+        System.out.println("Area of rectangle = "+r_a);
+    }
+}
+interface triangle  
+{
+    int ba=12,he=10;
+    default void t_area()
+    {
+        double t_a=0.5*ba*he;
+        System.out.println("Area of triangle = "+t_a);
+    }
+}
+class test implements circle,rectangle,triangle
+{
+    public static void main(String[]args)
+    {
+        test t=new test();
+        t.c_area();
+        t.r_area();
+        t.t_area();
+    }
+}
+
+output
+Area of circle = 78.5
+Area of rectangle = 150
+Area of triangle = 60.0
+
+
+
+
+
+
+
+9)
+import java.util.Scanner;
+
+public class LongestCommonPrefix {
+    public static String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+        String prefix = strs[0];
+ 
+        for (int i = 1; i < strs.length; i++) {
+            
+            while (strs[i].indexOf(prefix) != 0) {
+                prefix = prefix.substring(0, prefix.length() - 1);
+                if (prefix.isEmpty()) {
+                    return "";
+                }
+            }
+        }
+        
+        return prefix;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of strings: ");
+        int n = scanner.nextInt();
+        scanner.nextLine();         
+        String[] strs = new String[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter string " + (i + 1) + ": ");
+            strs[i] = scanner.nextLine();
+        }
+
+        System.out.println("Longest common prefix: " + longestCommonPrefix(strs));
+
+        scanner.close();
+    }
+}
+
+
+10)
+import java.util.*;
+class q4{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        String o=ro(s);
+        System.out.println(o);
+    }
+    public static String ro(String str){
+        int length=str.length();
+        if(length>0){
+            String re=str.substring(3)+str.substring(0,3);
+            return re;
+        }
+        else{
+            return str;
+        }
+    }
+}     
+
+
+
