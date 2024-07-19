@@ -11,6 +11,7 @@ Output :
 2 1
 
 1 */
+Day-10
 import java.util.Scanner;
 public class num_pattern_desc {
     public static void main(String[] args) {
